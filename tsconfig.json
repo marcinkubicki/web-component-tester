@@ -44,7 +44,6 @@
         "test/unit/grunt.ts",
         "test/unit/gulp.ts",
         "test/unit/paths.ts",
-        "custom_typings/cleankill.d.ts",
         "custom_typings/findup-sync.d.ts",
         "custom_typings/promisify-node.d.ts",
         "custom_typings/send.d.ts",

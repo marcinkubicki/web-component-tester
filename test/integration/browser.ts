@@ -36,7 +36,9 @@ function assertFailed(context: TestContext, expectedError: string) {
 }
 
 /** Asserts that all browsers match the given stats. */
-function assertStats(context: TestContext, passing: number, pending: number, failing: number, status: 'complete') {
+function assertStats(
+      context: TestContext, passing: number, pending: number, failing: number,
+      status: string) {
   const expected: Stats = {
       passing: passing, pending: pending, failing: failing, status: status};
   expect(context.stats).to.deep.equal(
@@ -63,7 +65,9 @@ function assertTestErrors(context: TestContext, expected: TestErrorExpectation) 
     lodash.each(actual, function(errors, file) {
       const expectedErrors = expected[file];
       // Currently very dumb for simplicity: We don't support suites.
-      expect(Object.keys(expectedErrors)).to.have.members(Object.keys(errors), 'Test failure mismatch for ' + file + ' on ' + browser);
+      expect(Object.keys(expectedErrors)).to.have.members(
+          Object.keys(errors),
+          `Test failure mismatch for ${file} on ${browser}`);
 
       lodash.each(errors, function(error: Error, test: string) {
         const locationInfo  = ` for ${file} - "${test}" on ${browser}`;
